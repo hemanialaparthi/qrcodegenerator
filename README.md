@@ -1,4 +1,4 @@
-# Running the QR Code Generator Flask Application
+# QR Code Generator Flask Application
 
 I was going to make this a web app but I don't have enough time
 
@@ -20,48 +20,35 @@ cd <repository-directory>
 
 ## Step 2: Create the venv
 
-1)
 ```cmd
-cd qrcodegenerator
+python3 -m venv venv
 ```
 
-2)
 ```cmd
-cd flask
+source venv/bin/activate
 ```
 
-3)
-```cmd
-source bin/activate
-```
-
-### Install all the requirements
-
-1) Go to the directory with the `requirements.txt` file.
-
-2) Use this command to install the requirements:
-
-`pip install -r requirements.txt`
-
-Now you have all the requirements!
-
-### Run the script
-
-1) Go to the with the `qrgenerator.py` file.
-
-2) On your terminal, use the following command:
+## Step 3: Install the requirements
 
 ```cmd
-python3 qrgenerator.py
+pip install -r requirements.txt
 ```
 
-_or_
+## Step 4: Run the program
 
 ```cmd
-python qrgenerator.py
+ python3 qrgenerator.py 
 ```
 
-### Click on the server and use the web!
+2) Click on the `* Running on http:` and use the app!
+
+
+# Issue Tracker
+
+Issues can be reported [here](https://github.com/hemanialaparthi/qrcodegenerator/issues)
+
+
+
 
 
 
