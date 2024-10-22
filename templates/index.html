@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator!</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Assuming you have a separate CSS file -->
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Convert Links to QR Code</h1>
+            <h2>Insert the link to generate a QR code</h2>
+        </div>
+        <form action="/generate" method="POST">
+            <input type="text" name="link" placeholder="Enter the link here" required>
+            <button type="submit" class="button">Generate QR Code</button>
+            <button type="button" class="button reset" onclick="resetForm()">Reset</button> <!-- Reset Button -->
+        </form>
+        <div class="generated">
+            {% if qr_code %}
+                <h3>Your Generated QR Code:</h3>
+                <img src="{{ qr_code }}" alt="QR Code" class="qr-code">
+                <p>Here is the generated QR Code!</p>
+            {% elif error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function resetForm() {
+            document.querySelector('input[name="link"]').value = ''; // Clear input field
+            document.querySelector('.generated').innerHTML = ''; // Clear generated QR code
+        }
+    </script>
+</body>
+</html>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 1rem; /* Added padding for smaller screens */
+}
+
+.container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    margin: auto; /* Centering the container */
+}
+
+.title {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4A4A4A;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+input[type="text"] {
+    padding: 0.75rem 1rem; /* Increased horizontal padding */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%; /* Full width for better responsiveness */
+    transition: border 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+    margin-bottom: 1rem; /* Added margin-bottom for spacing */
+}
+
+input[type="text"]:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.button {
+    padding: 0.75rem; 
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.reset {
+    background-color: #6c757d; /* Gray background for the reset button */
+}
+
+.reset:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+}
+
+.qr-code {
+    margin-top: 2rem;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 600px) {
+    .title {
+        font-size: 1.5rem; /* Smaller title font on small screens */
+    }
+
+    h2 {
+        font-size: 1rem; /* Smaller subtitle font on small screens */
+    }
+
+    .button {
+        font-size: 0.9rem; /* Smaller button font size */
+    }
+}
+
+</style>
