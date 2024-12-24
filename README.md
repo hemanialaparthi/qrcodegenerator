@@ -14,8 +14,8 @@ Make sure you have the following installed on your machine:
 If you haven't already, clone the repository containing the QR code generator files. Open your terminal and run:
 
 ```cmd
-git clone <repository-url>
-cd <repository-directory>
+git clone <git@github.com:hemanialaparthi/qrcodegenerator.git>
+cd <qrcodegenerator>
 ```
 
 ## Step 2: Create the venv
