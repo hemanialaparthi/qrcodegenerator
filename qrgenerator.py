@@ -11,19 +11,19 @@ def index():
 
 @app.route('/generate', methods=['POST'])
 def generate():
-    data = request.form.get('link')  # Get the link from the form
+    data = request.form.get('link')  # get the link from the form
 
-    if data:  # Check if data is provided
+    if data:  # check if data is provided
         memory = BytesIO()
-        img = qrcode.make(data)  # Generate the QR code
-        img.save(memory, format='PNG')  # Save to BytesIO as PNG
+        img = qrcode.make(data)  # generate the QR code
+        img.save(memory, format='PNG')  # save to BytesIO as PNG
         memory.seek(0)
 
-        # Encode the image in base64
+        # encode the image in base64
         base64_img = base64.b64encode(memory.getvalue()).decode('utf-8')
         img_tag = f"data:image/png;base64,{base64_img}"
 
-        return render_template('index.html', qr_code=img_tag)  # Pass the QR code image to the template
+        return render_template('index.html', qr_code=img_tag)  # pass the QR code image to the template
 
     return render_template('index.html', error="Please provide a valid link.")
 
